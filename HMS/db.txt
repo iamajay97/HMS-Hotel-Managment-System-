@@ -1,0 +1,12 @@
+mysql> delimiter //
+mysql> create event daily_evt1
+    -> on schedule every 1 day
+    -> do
+    -> begin
+    -> update room
+    -> set available='yes' where room_no=(select room_no from room where curdate() > check_out);
+    -> end //
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    2
+Current database: hms
